@@ -15,6 +15,7 @@ function validationForm(){
 
 <form name="register" action="submitForm.php" onsubmit="return validateForm()" method="post">
     
+    <h3>User details</h3>
     <input type="text" id="username" name="username" placeholder="Username"><br>
 
     <input type="password" id="password" name="password" placeholder="Password"><br>
@@ -38,7 +39,7 @@ function validationForm(){
     <label for="non-binary">Non-binary</label><br>
     
 
-    <label for="address">Address</label><br>
+    <h3>Address</h3>
 
     <input type="text" id="addressNumber" name="addressNumber" placeholder="Address number"><br>
 
