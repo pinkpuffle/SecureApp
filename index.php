@@ -31,17 +31,18 @@ function validationForm(){
 
 <form name="register" action="submitForm.php" onsubmit="return validateForm()" method="post">
     
-    <h3>User details</h3>
+    <h3>Login details</h3>
     <input type="text" id="username" name="username" placeholder="Username"><br>
 
-    <input type="password" id="password" name="password" placeholder="Password"><br>
-
+    <input type="password" id="password" name="password" placeholder="Password">
     <input type="password" id="repeatPassword" name="repeatPassword" placeholder="Repeat password"><br>
 
-    <input type="email" id="email" name="email" placeholder="Email"><br>
+    <h3>Personal details</h3>
 
     <input type="text" id="firstName" name="firstName" placeholder="First name">
     <input type="text" id="lastName" name="lastName" placeholder="Last name"><br>
+
+    <input type="email" id="email" name="email" placeholder="Email"><br>
 
     <label for="dateOfBirth">Date of Birth</label><br>
     <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
