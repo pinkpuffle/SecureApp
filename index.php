@@ -2,6 +2,8 @@
 <head>
 <script>
 function validationForm(){
+    var check = true; //check if form is validated
+
     let username = document.forms["register"]["username"].value;
     let password = document.forms["register"]["password"].value;
     let repeatPassword = document.forms["register"]["repeatPassword"].value;
@@ -21,6 +23,20 @@ function validationForm(){
     let postcode = document.forms["register"]["postcode"].value;
     let country = document.forms["register"]["country"].value;
 
+    //username
+    if(noValue(username) || over100(username)){
+        check = false;
+    }
+
+    if(noValue(password) || over100(password)){
+        check = false;
+    }
+
+    if(repeatPassword != password){
+        check = false;
+    }
+
+    return check;
 }
 
 function noValue(input){ if(input.length <= 0){return true;} }
