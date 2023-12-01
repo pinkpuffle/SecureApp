@@ -2,6 +2,22 @@
 <head>
 <script>
 function validationForm(){
+    let username = document.forms["register"]["username"].value;
+    let password = document.forms["register"]["password"].value;
+    let repeatPassword = document.forms["register"]["repeatPassword"].value;
+    let email = document.forms["register"]["email"].value;
+    let firstName = document.forms["register"]["firstName"].value;
+    let lastName = document.forms["register"]["lastName"].value;
+    let dateOfBirth = document.forms["register"]["dateOfBirth"].value;
+    let gender = document.forms["register"]["gender"].value;
+
+    let adddressNumber = document.forms["register"]["addressNumber"].value;
+    let addressL1 = document.forms["register"]["addressL1"].value;
+    let addressL2 = document.forms["register"]["addressL2"].value;
+    let town = document.forms["register"]["town"].value;
+    let county = document.forms["register"]["county"].value;
+    let postcode = document.forms["register"]["postcode"].value;
+    let country = document.forms["register"]["country"].value;
 
 }
 
