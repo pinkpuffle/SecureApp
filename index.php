@@ -23,6 +23,10 @@ function validationForm(){
 
 }
 
+function noValue(input){ if(input.length <= 0){return true;} }
+
+function over100(input){ if(input.length > 100{return true;}) }
+
 </script>
 
 </head>
