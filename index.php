@@ -11,6 +11,8 @@ function validationForm(){
 
 <body>
 
+<h1>Register</h1><br>
+
 <form name="register" action="submitForm.php" onsubmit="return validateForm()" method="post">
     
     <input type="text" id="username" name="username" placeholder="Username"><br>
