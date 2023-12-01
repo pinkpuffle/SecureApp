@@ -5,9 +5,11 @@ function validationForm(){
     let username = document.forms["register"]["username"].value;
     let password = document.forms["register"]["password"].value;
     let repeatPassword = document.forms["register"]["repeatPassword"].value;
-    let email = document.forms["register"]["email"].value;
+
     let firstName = document.forms["register"]["firstName"].value;
     let lastName = document.forms["register"]["lastName"].value;
+    let email = document.forms["register"]["email"].value;
+    let phoneNumber = document.forms["register"]["phoneNumber"].value;
     let dateOfBirth = document.forms["register"]["dateOfBirth"].value;
     let gender = document.forms["register"]["gender"].value;
 
@@ -43,6 +45,8 @@ function validationForm(){
     <input type="text" id="lastName" name="lastName" placeholder="Last name"><br>
 
     <input type="email" id="email" name="email" placeholder="Email"><br>
+
+    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone number"><br>
 
     <label for="dateOfBirth">Date of Birth</label><br>
     <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
