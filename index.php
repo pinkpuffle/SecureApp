@@ -27,6 +27,24 @@ function validationForm(){
     <label for="dateOfBirth">Date of Birth</label><br>
     <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
 
+    <label for="address">Address</label><br>
+
+    <input type="text" id="addressNumber" name="addressNumber" placeholder="Address number"><br>
+
+    <input type="text" id="addressL1" name="addressL1" placeholder="Address line 1"><br>
+
+    <input type="text" id="addressL2" name="addressL2" placeholder="Address line 2 (optional)"><br>
+
+    <input type="text" id="town" name="town" placeholder="Town/City"><br>
+
+    <input type="text" id="county" name="county" placeholder="County"><br>
+
+    <input type="text" id="postcode" name="postcode" placeholder="Postcode"><br>
+
+    <input type="text" id="country" name="country" placeholder="Country"><br>
+
+
+
 </form>
 
 
