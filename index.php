@@ -52,8 +52,7 @@ function validationForm(){
 
     <input type="text" id="country" name="country" placeholder="Country"><br>
 
-
-
+    <button class="button">Submit</button>
 </form>
 
 
