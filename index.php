@@ -46,7 +46,9 @@ function validationForm(){
 
     <input type="email" id="email" name="email" placeholder="Email"><br>
 
-    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone number"><br>
+    <label for="phoneNumber">Phone number</label><br>
+    <input type="text" id="tel" name="phoneNumber" placeholder="01234-567891"
+    pattern="[0-9]{5}-[0-9]{6}"><br>
 
     <label for="dateOfBirth">Date of Birth</label><br>
     <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
