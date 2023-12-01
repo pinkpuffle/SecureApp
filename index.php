@@ -27,6 +27,15 @@ function validationForm(){
     <label for="dateOfBirth">Date of Birth</label><br>
     <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
 
+    <label for="gender">Gender</label><br>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label>
+    <input type="radio" id="Non-binary" name="gender" value="Non-binary">
+    <label for="non-binary">Non-binary</label><br>
+    
+
     <label for="address">Address</label><br>
 
     <input type="text" id="addressNumber" name="addressNumber" placeholder="Address number"><br>
