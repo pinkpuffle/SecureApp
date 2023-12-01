@@ -15,6 +15,21 @@ function validationForm(){
     
     <input type="text" id="firstName" name="firstName" placeholder="First name">
     <input type="text" id="lastName" name="lastName" placeholder="Last name">
+    <br>
+
+    <input type="text" id="username" name="username" placeholder="Username">
+    <br>
+
+    <input type="password" id="password" name="password" placeholder="Password">
+    <br>
+
+    <input type="password" id="repeatPassword" name="repeatPassword" placeholder="Repeat password">
+    <br>
+
+    <input type="email" id="email" name="email" placeholder="Email">
+    <br>
+
+
 
 </form>
 
