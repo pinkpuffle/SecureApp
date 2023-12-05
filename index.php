@@ -56,6 +56,11 @@ function validateForm(){
         check = false;
     }
 
+    //dob
+    if(!isValidDate(dateOfBirth)){
+        check = false;
+    }
+
 
 
 
@@ -77,6 +82,11 @@ function validatePhone(number){
     var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
     return re.test(number);
     //https://stackoverflow.com/a/29767609
+}
+
+function isValidDate(d){
+    return !isNaN((new Date(d)).getTime());
+    //https://stackoverflow.com/a/36000303
 }
 
 </script>
