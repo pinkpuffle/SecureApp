@@ -1,7 +1,7 @@
 <html>
 <head>
 <script>
-function validationForm(){
+function validateForm(){
     var check = true; //check if form is validated
 
     let username = document.forms["register"]["username"].value;
@@ -28,13 +28,25 @@ function validationForm(){
         check = false;
     }
 
+    //password
     if(noValue(password) || over100(password)){
         check = false;
     }
-
     if(repeatPassword != password){
         check = false;
     }
+
+    //first name
+    if(noValue(firstName) || over100(firstName)){
+        check = false;
+    }
+
+    //last name
+    if(noValue(lastName) || over100(lastName)){
+        check = false;
+    }
+
+
 
     return check;
 }
