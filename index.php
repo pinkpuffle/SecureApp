@@ -46,6 +46,11 @@ function validateForm(){
         check = false;
     }
 
+    //email
+    if(!validateEmail(email)){
+        check = false;
+    }
+
 
 
     return check;
@@ -54,6 +59,13 @@ function validateForm(){
 function noValue(input){ if(input.length <= 0){return true;} }
 
 function over100(input){ if(input.length > 100{return true;}) }
+
+function validateEmail(email){
+    var re = /\S+@\S+\.\S+/;
+    return re.text(email);
+    //https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
+    //may need to be edited
+}
 
 </script>
 
