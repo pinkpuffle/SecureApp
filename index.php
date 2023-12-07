@@ -23,41 +23,51 @@ function validateForm(){
     let postcode = document.forms["register"]["postcode"].value;
     let country = document.forms["register"]["country"].value;
 
+    let petData = document.forms["register"]["petData"].value;
+
     //username
     if(noValue(username) || over100(username)){
+        document.getElementById("usernameWarning").innerHTML = "Username must be between 1 and 100 characters";
         check = false;
     }
 
     //password
     if(noValue(password) || over100(password)){
+        document.getElementById("passwordWarning").innerHTML = "Password must be between 1 and 100 characters";
         check = false;
     }
     if(repeatPassword != password){
+        document.getElementById("repeatPasswordWarning").innerHTML = "Passwords must match";
         check = false;
     }
 
     //first name
     if(noValue(firstName) || over100(firstName)){
+        document.getElementById("firstNameWarning").innerHTML = "First name must be between 1 and 100 characters";
         check = false;
     }
 
     //last name
     if(noValue(lastName) || over100(lastName)){
+        document.getElementById("lastNameWarning").innerHTML = "Last name must be between 1 and 100 characters";
         check = false;
     }
 
     //email
     if(!validateEmail(email)){
+        document.getElementById("emailWarning").innerHTML = "Email must be valid format";
         check = false;
     }
 
     //phone
     if(!validatePhone(phoneNumber)){
+        document.getElementById("phoneNumberWarning").innerHTML = "Phone number must be valid format";
         check = false;
     }
 
     //dob
     if(!isValidDate(dateOfBirth)){
+        document.getElementById("dateOfBirthWarning").innerHTML = "Date of birth must be valid format";
         check = false;
     }
 
@@ -103,26 +113,34 @@ function isValidDate(d){
 
     <label for="username">Username</label><br>
     <input type="text" id="username" name="username" placeholder="Username"><br>
+    <p id="usernameWarning"></p><br>
 
     <label for="Password">Password</label><br>
     <input type="password" id="password" name="password" placeholder="Password">
     <input type="password" id="repeatPassword" name="repeatPassword" placeholder="Repeat password"><br>
+    <p id="passwordWarning"></p><br>
+    <p id="repeatPasswordWarning"></p><br>
 
     <h3>Personal details</h3>
 
     <label for="name">Name</label><br>
     <input type="text" id="firstName" name="firstName" placeholder="First name">
     <input type="text" id="lastName" name="lastName" placeholder="Last name"><br>
+    <p id="firstNameWarning"></p><br>
+    <p id="lastNameWarning"></p><br>
     
     <label for="email">Email</label><br>
     <input type="email" id="email" name="email" placeholder="email@example.com"><br>
+    <p id="emailWarning"></p><br>
 
     <label for="phoneNumber">Phone number</label><br>
     <input type="text" id="tel" name="phoneNumber" placeholder="01234-567891"
     pattern="[0-9]{5}-[0-9]{6}"><br>
+    <p id="phoneNumberWarning"></p><br>
 
     <label for="dateOfBirth">Date of Birth</label><br>
     <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
+    <p id="dateOfBirthWarning"></p><br>
 
     <label for="gender">Gender</label><br>
     <input type="radio" id="male" name="gender" value="male">
@@ -131,27 +149,36 @@ function isValidDate(d){
     <label for="female">Female</label>
     <input type="radio" id="Non-binary" name="gender" value="Non-binary">
     <label for="non-binary">Non-binary</label><br>
+    <p id="genderWarning"></p><br>
     
 
     <h3>Address</h3>
 
     <input type="text" id="addressNumber" name="addressNumber" placeholder="Address number"><br>
+    <p id="addressNumberWarning"></p><br>
 
     <input type="text" id="addressL1" name="addressL1" placeholder="Address line 1"><br>
+    <p id="addressL1Warning"></p><br>
 
     <input type="text" id="addressL2" name="addressL2" placeholder="Address line 2 (optional)"><br>
+    <p id="addressL2Warning"></p><br>
 
     <input type="text" id="town" name="town" placeholder="Town/City"><br>
+    <p id="townWarning"></p><br>
 
     <input type="text" id="county" name="county" placeholder="County"><br>
+    <p id="countyWarning"></p><br>
 
     <input type="text" id="postcode" name="postcode" placeholder="Postcode"><br>
+    <p id="postcodeWarning"></p><br>
 
     <input type="text" id="country" name="country" placeholder="Country"><br>
+    <p id="countryWarning"></p><br>
 
     <h3>Pet information</h3><br>
     JSON format: pets: Pet name, Pet type, Pet age<br>
-    <input type="file" name="petFile" id="petFile"><br><br>
+    <input type="file" name="petData" id="petData"><br><br>
+    <p id="petDataWarning"></p><br>
 
     <button class="button">Submit</button>
 </form>
