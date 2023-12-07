@@ -150,12 +150,11 @@ function isValidDate(d){
     <input type="text" id="country" name="country" placeholder="Country"><br>
 
     <h3>Pet information</h3><br>
-    JSON format: Pet name, Pet type, Pet age<br>
+    JSON format: pets: Pet name, Pet type, Pet age<br>
     <input type="file" name="petFile" id="petFile"><br><br>
 
     <button class="button">Submit</button>
 </form>
-
 
 
 </body>
