@@ -22,6 +22,12 @@ $county = htmlspecialchars($_POST["county"]);
 $postcode = htmlspecialchars($_POST["postcode"]);
 $country = htmlspecialchars($_POST["country"]);
 
+$conn = new mysqli($serverName, $dbUsername, $dbPassword, $dbName);
+// Check connection
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+}
+
 function insertUser($username, $password){
 
 }
@@ -35,7 +41,7 @@ function insertAddress($addressNumber, $addressL1, $addressL2, $town, $county, $
 }
 
 function insertPet(){
-    
+
 }
 
 ?>
