@@ -41,6 +41,7 @@ function validateForm(){
         check = false;
     }
 
+
     //first name
     if(underL(username, 1) || overL(firstName, 30)){
         document.getElementById("firstNameWarning").innerHTML = "First name must be between 1 and 30 characters";
@@ -71,15 +72,35 @@ function validateForm(){
         check = false;
     }
 
+    //gender
+    if(!["male", "female", "non-binary"].includes(gender)){
+        document.getElementById("genderWarning").innerHTML = "Must be a valid gender";
+        check = false;
+    }
+
+
+    //address L1
+    if(underL(addressL1, 3) || overL(asddressL1, 30)){
+        document.getElementById("addressL1Warning").innerHTML = "Address line 1 must be betweem 3 and 30 character";
+        check = false;
+    }
+
+    //address L2
+    if(overL(asddressL1, 30)){
+        document.getElementById("addressL2Warning").innerHTML = "Address line 2 must be under 30 character";
+        check = false;
+    }
+
+    
+    
     
 
 
 
+    check = false; //for testing
 
     return check;
 }
-
-function noValue(input){ if(input.length <= 0){return true;} }
 
 //over and under length
 function underL(input, l){ if(input.length < l{return true;}) }
@@ -116,38 +137,38 @@ function isValidDate(d){
     <h3>Login details</h3>
 
     <label for="username">Username</label><br>
-    <input type="text" id="username" name="username" placeholder="Username"><br>
+    <input type="text" id="username" name="username" placeholder="Username" required><br>
     <p id="usernameWarning"></p><br>
 
     <label for="Password">Password</label><br>
-    <input type="password" id="password" name="password" placeholder="Password">
-    <input type="password" id="repeatPassword" name="repeatPassword" placeholder="Repeat password"><br>
+    <input type="password" id="password" name="password" placeholder="Password" required>
+    <input type="password" id="repeatPassword" name="repeatPassword" placeholder="Repeat password" required><br>
     <p id="passwordWarning"></p><br>
     <p id="repeatPasswordWarning"></p><br>
 
     <h3>Personal details</h3>
 
     <label for="name">Name</label><br>
-    <input type="text" id="firstName" name="firstName" placeholder="First name">
-    <input type="text" id="lastName" name="lastName" placeholder="Last name"><br>
+    <input type="text" id="firstName" name="firstName" placeholder="First name" required>
+    <input type="text" id="lastName" name="lastName" placeholder="Last name" required><br>
     <p id="firstNameWarning"></p><br>
     <p id="lastNameWarning"></p><br>
     
     <label for="email">Email</label><br>
-    <input type="email" id="email" name="email" placeholder="email@example.com"><br>
+    <input type="email" id="email" name="email" placeholder="email@example.com" required><br>
     <p id="emailWarning"></p><br>
 
     <label for="phoneNumber">Phone number</label><br>
     <input type="text" id="tel" name="phoneNumber" placeholder="01234-567891"
-    pattern="[0-9]{5}-[0-9]{6}"><br>
+    pattern="[0-9]{5}-[0-9]{6}" required><br>
     <p id="phoneNumberWarning"></p><br>
 
     <label for="dateOfBirth">Date of Birth</label><br>
-    <input type="date" id="dateOfBirth" name="dateOfBirth"><br>
+    <input type="date" id="dateOfBirth" name="dateOfBirth" required><br>
     <p id="dateOfBirthWarning"></p><br>
 
     <label for="gender">Gender</label><br>
-    <input type="radio" id="male" name="gender" value="male">
+    <input type="radio" id="male" name="gender" value="male" required>
     <label for="male">Male</label>
     <input type="radio" id="female" name="gender" value="female">
     <label for="female">Female</label>
@@ -158,25 +179,25 @@ function isValidDate(d){
 
     <h3>Address</h3>
 
-    <input type="text" id="addressNumber" name="addressNumber" placeholder="Address number"><br>
+    <input type="text" id="addressNumber" name="addressNumber" placeholder="Address number" required><br>
     <p id="addressNumberWarning"></p><br>
 
-    <input type="text" id="addressL1" name="addressL1" placeholder="Address line 1"><br>
+    <input type="text" id="addressL1" name="addressL1" placeholder="Address line 1" required><br>
     <p id="addressL1Warning"></p><br>
 
     <input type="text" id="addressL2" name="addressL2" placeholder="Address line 2 (optional)"><br>
     <p id="addressL2Warning"></p><br>
 
-    <input type="text" id="town" name="town" placeholder="Town/City"><br>
+    <input type="text" id="town" name="town" placeholder="Town/City" required><br>
     <p id="townWarning"></p><br>
 
-    <input type="text" id="county" name="county" placeholder="County"><br>
+    <input type="text" id="county" name="county" placeholder="County" required><br>
     <p id="countyWarning"></p><br>
 
-    <input type="text" id="postcode" name="postcode" placeholder="Postcode"><br>
+    <input type="text" id="postcode" name="postcode" placeholder="Postcode" required><br>
     <p id="postcodeWarning"></p><br>
 
-    <input type="text" id="country" name="country" placeholder="Country"><br>
+    <input type="text" id="country" name="country" placeholder="Country" required><br>
     <p id="countryWarning"></p><br>
 
     <h3>Pet information</h3><br>
