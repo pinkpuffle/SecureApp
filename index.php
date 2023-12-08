@@ -99,7 +99,7 @@ function validateForm(){
     }
 
     //address number
-    if(!isNumber(number) || underL(number, 1) || overL(number, 10)){
+    if(!isNumber(addressNumber) || underL(addressNumber, 1) || overL(addressNumber, 10)){
         document.getElementById("addressNumberWarning").innerHTML = "Must be a valid number between 1 and 10 characters";
     }
 
