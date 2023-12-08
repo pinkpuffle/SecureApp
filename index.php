@@ -141,7 +141,11 @@ function validateForm(){
         check = false;
     }
 
-
+    //pet data
+    if(!isValidJSON(petData)){
+        document.getElementById("petDataWarning").innerHTML = "Must be valid JSON";
+        check = false;
+    }
     
     
     
@@ -187,6 +191,15 @@ function isNumber(number){
 function isValidPostcode(postcode){
     var re = /^[A-Z]{1,2}[0-9]{1,2}[A-Z]{0,1} ?[0-9][A-Z]{2}$/i;
     return re.test(postcode);
+}
+
+function isValidJSON(jSON){
+    try{
+        JSON.parse(jSON);
+    }catch(e){
+        return false;
+    }
+    return true;
 }
 
 </script>
