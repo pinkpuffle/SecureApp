@@ -105,13 +105,13 @@ function validateForm(){
 
 
     //address L1
-    if(underL(addressL1, 3) || overL(asddressL1, 30)){
+    if(underL(addressL1, 3) || overL(addressL1, 30)){
         document.getElementById("addressL1Warning").innerHTML = "Address line 1 must be betweem 3 and 30 character";
         check = false;
     }
 
     //address L2
-    if(overL(asddressL1, 30)){
+    if(overL(addressL1, 30)){
         document.getElementById("addressL2Warning").innerHTML = "Address line 2 must be under 30 character";
         check = false;
     }
