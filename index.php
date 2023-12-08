@@ -76,13 +76,13 @@ function validateForm(){
     }
 
     //email
-    if(!validateEmail(email)){
+    if(!isValidEmail(email)){
         document.getElementById("emailWarning").innerHTML = "Email must be valid format";
         check = false;
     }
 
     //phone
-    if(!validatePhone(phoneNumber)){
+    if(!isValidPhone(phoneNumber)){
         document.getElementById("phoneNumberWarning").innerHTML = "Phone number must be valid format";
         check = false;
     }
@@ -130,7 +130,7 @@ function validateForm(){
     }
 
     //postcode
-    if(!validatePostcode(postcode)){
+    if(!isValidPostcode(postcode)){
         document.getElementById("postcodeWarning").innerHTML = "Must be a valid postcode";
         check = false;
     }
@@ -157,14 +157,14 @@ function validateForm(){
 function underL(input, l){ if(input.length < l{return true;}) }
 function overL(input, l){ if(input.length > l{return true;}) }
 
-function validateEmail(email){
+function isValidEmail(email){
     var re = /\S+@\S+\.\S+/;
     return re.test(email);
     //https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
     //may need to be edited
 }
 
-function validatePhone(number){
+function isValidPhone(number){
     var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
     return re.test(number);
     //https://stackoverflow.com/a/29767609
@@ -184,7 +184,7 @@ function isNumber(number){
     }
 }
 
-function validatePostcode(postcode){
+function isValidPostcode(postcode){
     var re = /^[A-Z]{1,2}[0-9]{1,2}[A-Z]{0,1} ?[0-9][A-Z]{2}$/i;
     return re.test(postcode);
 }
