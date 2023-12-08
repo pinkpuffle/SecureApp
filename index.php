@@ -146,10 +146,6 @@ function validateForm(){
         document.getElementById("petDataWarning").innerHTML = "Must be valid JSON";
         check = false;
     }
-    
-    
-    
-
 
 
     check = false; //for testing
@@ -182,10 +178,10 @@ function isValidDate(d){
 function isNumber(number){
     try{
         Integer.parseInt(number);
-        return true;
-    }catch{
+    }catch(e){
         return false;
     }
+    return true;
 }
 
 function isValidPostcode(postcode){
