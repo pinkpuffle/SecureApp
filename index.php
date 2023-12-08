@@ -96,6 +96,23 @@ function validateForm(){
         check = false;
     }
 
+    //town
+    if(underL(town, 3) || overL(town, 30)){
+        document.getElementById("townWarning").innerHTML = "Town must be between 3 and 30 characters";
+        check = false;
+    }
+
+    //county
+    if(underL(county, 3) || overL(county, 30)){
+        document.getElementById("countyWarning").innerHTML = "County must be between 3 and 30 characters";
+        check = false;
+    }
+
+    //county
+    if(underL(county, 3) || overL(county, 30)){
+        document.getElementById("countryWarning").innerHTML = "County must be between 3 and 30 characters";
+        check = false;
+    }
 
 
     
