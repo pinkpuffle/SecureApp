@@ -78,6 +78,11 @@ function validateForm(){
         check = false;
     }
 
+    //address number
+    if(!isNumber(number) || underL(number, 1) || overL(number, 10)){
+        document.getElementById("addressNumberWarning").innerHTML = "Must be a valid number between 1 and 10 characters";
+    }
+
 
     //address L1
     if(underL(addressL1, 3) || overL(asddressL1, 30)){
@@ -90,6 +95,8 @@ function validateForm(){
         document.getElementById("addressL2Warning").innerHTML = "Address line 2 must be under 30 character";
         check = false;
     }
+
+
 
     
     
@@ -122,6 +129,15 @@ function validatePhone(number){
 function isValidDate(d){
     return !isNaN((new Date(d)).getTime());
     //https://stackoverflow.com/a/36000303
+}
+
+function isNumber(number){
+    try{
+        Integer.parseInt(number);
+        return true;
+    }catch{
+        return false;
+    }
 }
 
 </script>
