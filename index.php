@@ -93,7 +93,7 @@ function validateForm(){
     }
 
     //gender
-    if(!["Male", "Female", "Non-binary"].includes(gender)){
+    if(!["male", "female", "non-binary"].includes(gender)){
         document.getElementById("genderWarning").innerHTML = "Must be a valid gender";
         check = false;
     }
@@ -245,7 +245,7 @@ function isValidJSON(jSON){
     <label for="male">Male</label>
     <input type="radio" id="female" name="gender" value="female">
     <label for="female">Female</label>
-    <input type="radio" id="Non-binary" name="gender" value="Non-binary">
+    <input type="radio" id="Non-binary" name="gender" value="non-binary">
     <label for="non-binary">Non-binary</label><br>
     <p id="genderWarning"></p><br>
     
