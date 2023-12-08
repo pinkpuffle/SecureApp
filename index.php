@@ -25,6 +25,27 @@ function validateForm(){
 
     let petData = document.forms["register"]["petData"].value;
 
+    //reset warnings
+    document.getElementById("usernameWarning").innerHTML = "";
+    document.getElementById("passwordWarning").innerHTML = "";
+    document.getElementById("repeatPasswordWarning").innerHTML = "";
+    document.getElementById("firstNameWarning").innerHTML = "";
+    document.getElementById("lastNameWarning").innerHTML = "";
+    document.getElementById("emailWarning").innerHTML = "";
+    document.getElementById("phoneNumberWarning").innerHTML = "";
+    document.getElementById("dateOfBirthWarning").innerHTML = "";
+    document.getElementById("genderWarning").innerHTML = "";
+    document.getElementById("addressNumberWarning").innerHTML = "";
+    document.getElementById("addressL1Warning").innerHTML = "";
+    document.getElementById("addressL2Warning").innerHTML = "";
+    document.getElementById("townWarning").innerHTML = "";
+    document.getElementById("countyWarning").innerHTML = "";
+    document.getElementById("postcodeWarning").innerHTML = "";
+    document.getElementById("countryWarning").innerHTML = "";
+    document.getElementById("petDataWarning").innerHTML = "";
+
+
+
     //username
     if(underL(username, 5) || overL(username, 30)){
         document.getElementById("usernameWarning").innerHTML = "Username must be between 5 and 30 characters";
@@ -108,6 +129,12 @@ function validateForm(){
         check = false;
     }
 
+    //postcode
+    if(!validatePostcode(postcode)){
+        document.getElementById("postcodeWarning").innerHTML = "Must be a valid postcode";
+        check = false;
+    }
+
     //county
     if(underL(county, 3) || overL(county, 30)){
         document.getElementById("countryWarning").innerHTML = "County must be between 3 and 30 characters";
@@ -155,6 +182,11 @@ function isNumber(number){
     }catch{
         return false;
     }
+}
+
+function validatePostcode(postcode){
+    var re = /^[A-Z]{1,2}[0-9]{1,2}[A-Z]{0,1} ?[0-9][A-Z]{2}$/i;
+    return re.test(postcode);
 }
 
 </script>
