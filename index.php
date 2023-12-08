@@ -26,13 +26,13 @@ function validateForm(){
     let petData = document.forms["register"]["petData"].value;
 
     //username
-    if(noValue(username) || over100(username)){
+    if(noValue(username) || overL(username, 100)){
         document.getElementById("usernameWarning").innerHTML = "Username must be between 1 and 100 characters";
         check = false;
     }
 
     //password
-    if(noValue(password) || over100(password)){
+    if(noValue(password) || overL(password, 100)){
         document.getElementById("passwordWarning").innerHTML = "Password must be between 1 and 100 characters";
         check = false;
     }
@@ -42,13 +42,13 @@ function validateForm(){
     }
 
     //first name
-    if(noValue(firstName) || over100(firstName)){
+    if(noValue(firstName) || overL(firstName, 100)){
         document.getElementById("firstNameWarning").innerHTML = "First name must be between 1 and 100 characters";
         check = false;
     }
 
     //last name
-    if(noValue(lastName) || over100(lastName)){
+    if(noValue(lastName) || overL(lastName, 100)){
         document.getElementById("lastNameWarning").innerHTML = "Last name must be between 1 and 100 characters";
         check = false;
     }
@@ -79,7 +79,9 @@ function validateForm(){
 
 function noValue(input){ if(input.length <= 0){return true;} }
 
-function over100(input){ if(input.length > 100{return true;}) }
+//over and under length
+function underL(input, l){ if(input.length < l{return true;}) }
+function overL(input, l){ if(input.length > l{return true;}) }
 
 function validateEmail(email){
     var re = /\S+@\S+\.\S+/;
