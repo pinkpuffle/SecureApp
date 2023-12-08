@@ -22,7 +22,6 @@ function validateForm(){
     let county = document.forms["register"]["county"].value;
     let postcode = document.forms["register"]["postcode"].value;
     let country = document.forms["register"]["country"].value;
-
     let petData = document.forms["register"]["petData"].value;
 
     //reset warnings
@@ -150,12 +149,12 @@ function validateForm(){
 
     check = false; //for testing
 
-    return check;
+    return false;
 }
 
 //over and under length
-function underL(input, l){ if(input.length < l{return true;}) }
-function overL(input, l){ if(input.length > l{return true;}) }
+function underL(input, l){ if(input.length < l){return true;} }
+function overL(input, l){ if(input.length > l){return true;} }
 
 function isValidEmail(email){
     var re = /\S+@\S+\.\S+/;
