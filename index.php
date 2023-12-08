@@ -93,7 +93,7 @@ function validateForm(){
     }
 
     //gender
-    if(!["male", "female", "non-binary"].includes(gender)){
+    if(!["Male", "Female", "Non-binary"].includes(gender)){
         document.getElementById("genderWarning").innerHTML = "Must be a valid gender";
         check = false;
     }
@@ -149,7 +149,7 @@ function validateForm(){
 
     check = false; //for testing
 
-    return false;
+    return check;
 }
 
 //over and under length
