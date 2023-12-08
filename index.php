@@ -26,14 +26,14 @@ function validateForm(){
     let petData = document.forms["register"]["petData"].value;
 
     //username
-    if(noValue(username) || overL(username, 100)){
-        document.getElementById("usernameWarning").innerHTML = "Username must be between 1 and 100 characters";
+    if(underL(username, 5) || overL(username, 30)){
+        document.getElementById("usernameWarning").innerHTML = "Username must be between 5 and 30 characters";
         check = false;
     }
 
     //password
-    if(noValue(password) || overL(password, 100)){
-        document.getElementById("passwordWarning").innerHTML = "Password must be between 1 and 100 characters";
+    if(underL(password, 5) || overL(password, 30)){
+        document.getElementById("passwordWarning").innerHTML = "Password must be between 5 and 30 characters";
         check = false;
     }
     if(repeatPassword != password){
@@ -42,14 +42,14 @@ function validateForm(){
     }
 
     //first name
-    if(noValue(firstName) || overL(firstName, 100)){
-        document.getElementById("firstNameWarning").innerHTML = "First name must be between 1 and 100 characters";
+    if(underL(username, 1) || overL(firstName, 30)){
+        document.getElementById("firstNameWarning").innerHTML = "First name must be between 1 and 30 characters";
         check = false;
     }
 
     //last name
-    if(noValue(lastName) || overL(lastName, 100)){
-        document.getElementById("lastNameWarning").innerHTML = "Last name must be between 1 and 100 characters";
+    if(underL(username, 1) || overL(lastName, 30)){
+        document.getElementById("lastNameWarning").innerHTML = "Last name must be between 1 and 30 characters";
         check = false;
     }
 
@@ -70,6 +70,8 @@ function validateForm(){
         document.getElementById("dateOfBirthWarning").innerHTML = "Date of birth must be valid format";
         check = false;
     }
+
+    
 
 
 
