@@ -279,7 +279,7 @@ function removeSpace(input){
 
     <h3>Pet information</h3><br>
     JSON format: pets: Pet name, Pet type, Pet age<br>
-    <input type="file" name="petData" id="petData"><br><br>
+    <input type="file" name="petData" id="petData" accept=".json"><br><br>
     <p id="petDataWarning"></p><br>
 
     <button class="button">Submit</button>
