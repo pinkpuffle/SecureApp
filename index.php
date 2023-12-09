@@ -22,7 +22,7 @@ function validateForm(){
     let county = document.forms["register"]["county"].value;
     let postcode = document.forms["register"]["postcode"].value;
     let country = document.forms["register"]["country"].value;
-    let petData = document.forms["register"]["petData"].value;
+    let petFile = document.getElementById("petData").files[0];
 
     //reset warnings
     document.getElementById("usernameWarning").innerHTML = "";
@@ -140,7 +140,7 @@ function validateForm(){
     }
 
     //pet data
-    if(!isValidJSON(petData)){
+    if(!isValidJSON(petFile)){
         document.getElementById("petDataWarning").innerHTML = "Must be valid JSON";
         check = false;
     }
@@ -189,7 +189,12 @@ function isValidPostcode(postcode){
 
 function isValidJSON(jSON){
     try{
-        JSON.parse(jSON);
+        let reader = new FileReader();
+        reader.readAsText(jSON);
+        reader.onload = function() {
+            console.log(reader.result);
+            JSON.parse(reader.result);
+        };
     }catch(e){
         return false;
     }
@@ -218,8 +223,8 @@ function removeSpace(input){
     <p id="usernameWarning"></p><br>
 
     <label for="Password">Password</label><br>
-    <input type="password" id="password" name="password" placeholder="Password" required>
-    <input type="password" id="repeatPassword" name="repeatPassword" placeholder="Repeat password" required><br>
+    <input type="password" id="password" name="password" placeholder="Password">
+    <input type="password" id="repeatPassword" name="repeatPassword" placeholder="Repeat password"><br>
     <p id="passwordWarning"></p><br>
     <p id="repeatPasswordWarning"></p><br>
 
