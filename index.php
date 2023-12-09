@@ -81,7 +81,7 @@ function validateForm(){
     }
 
     //phone
-    if(!isValidPhone(phoneNumber)){
+    if(!isValidPhone(removeSpace(phoneNumber))){
         document.getElementById("phoneNumberWarning").innerHTML = "Phone number must be valid format";
         check = false;
     }
@@ -104,7 +104,6 @@ function validateForm(){
     }
 
 
-    //address L1
     if(underL(addressL1, 3) || overL(addressL1, 30)){
         document.getElementById("addressL1Warning").innerHTML = "Address line 1 must be betweem 3 and 30 character";
         check = false;
@@ -197,6 +196,11 @@ function isValidJSON(jSON){
     return true;
 }
 
+function removeSpace(input){
+    return input.replace(/\s/g, "");
+    //https://stackoverflow.com/a/10800402
+}
+
 </script>
 
 </head>
@@ -233,7 +237,7 @@ function isValidJSON(jSON){
 
     <label for="phoneNumber">Phone number</label><br>
     <input type="text" id="tel" name="phoneNumber" placeholder="01234-567891"
-    pattern="[0-9]{5}-[0-9]{6}" required><br>
+     required><br>
     <p id="phoneNumberWarning"></p><br>
 
     <label for="dateOfBirth">Date of Birth</label><br>
