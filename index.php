@@ -139,10 +139,17 @@ function validateForm(){
         check = false;
     }
 
-    //pet data
-    if(!isValidJSON(petFile)){
-        document.getElementById("petDataWarning").innerHTML = "Must be valid JSON";
-        check = false;
+    //JSON
+    let reader = new FileReader();
+    reader.readAsText(petFile); //reads uploade file
+    reader.onload = function() {
+        try{ //tries parsing file
+            JSON.parse(reader.result);
+        }catch(e){ //catches exception (if not valid JSON)
+            //console.log(e);
+            document.getElementById("petDataWarning").innerHTML = "Must be valid JSON";
+            check = false;
+        }
     }
 
 
@@ -185,20 +192,6 @@ function isNumber(number){
 function isValidPostcode(postcode){
     var re = /^[A-Z]{1,2}[0-9]{1,2}[A-Z]{0,1} ?[0-9][A-Z]{2}$/i;
     return re.test(postcode);
-}
-
-function isValidJSON(jSON){
-    try{
-        let reader = new FileReader();
-        reader.readAsText(jSON);
-        reader.onload = function() {
-            console.log(reader.result);
-            JSON.parse(reader.result);
-        };
-    }catch(e){
-        return false;
-    }
-    return true;
 }
 
 function removeSpace(input){
