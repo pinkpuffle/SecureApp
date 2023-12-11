@@ -44,7 +44,6 @@ function validateForm(){
     document.getElementById("petDataWarning").innerHTML = "";
 
 
-
     //username
     if(underL(username, 5) || overL(username, 30)){
         document.getElementById("usernameWarning").innerHTML = "Username must be between 5 and 30 characters";
