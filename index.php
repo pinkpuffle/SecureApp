@@ -15,7 +15,7 @@ function validateForm(){
     let dateOfBirth = document.forms["register"]["dateOfBirth"].value;
     let gender = document.forms["register"]["gender"].value;
 
-    let adddressNumber = document.forms["register"]["addressNumber"].value;
+    let addressNumber = document.getElementById("addressNumber").value;
     let addressL1 = document.forms["register"]["addressL1"].value;
     let addressL2 = document.forms["register"]["addressL2"].value;
     let town = document.forms["register"]["town"].value;
@@ -98,8 +98,9 @@ function validateForm(){
         check = false;
     }
 
+
     //address number
-    if(!isNumber(addressNumber) || underL(addressNumber, 1) || overL(addressNumber, 10)){
+    if(isNaN(addressNumber) || underL(addressNumber, 1) || overL(addressNumber, 10)){
         document.getElementById("addressNumberWarning").innerHTML = "Must be a valid number between 1 and 10 characters";
     }
 
@@ -178,15 +179,6 @@ function isValidPhone(number){
 function isValidDate(d){
     return !isNaN((new Date(d)).getTime());
     //https://stackoverflow.com/a/36000303
-}
-
-function isNumber(number){
-    try{
-        Integer.parseInt(number);
-    }catch(e){
-        return false;
-    }
-    return true;
 }
 
 function isValidPostcode(postcode){
