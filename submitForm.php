@@ -2,27 +2,36 @@
 <body>
 <?php
 include 'config.php';
-//login details
-$username = htmlspecialchars($_POST["username"]);
-$password = htmlspecialchars($_POST["password"]);
-$repeatPassword = htmlspecialchars($_POST["repeatPassword"]);
-//personal details
-$firstName = htmlspecialchars($_POST["firstName"]);
-$lastName = htmlspecialchars($_POST["lastName"]);
-$email = htmlspecialchars($_POST["email"]);
-$phoneNumber = htmlspecialchars($_POST["phoneNumber"]);
-$dateOfBirth = htmlspecialchars($_POST["dateOfBirth"]);
-$gender = htmlspecialchars($_POST["gender"]);
-//address
-$addressNumber = htmlspecialchars($_POST["addressNumber"]);
-$addressL1 = htmlspecialchars($_POST["addressL1"]);
-$addressL2 = htmlspecialchars($_POST["addressL2"]);
-$town = htmlspecialchars($_POST["town"]);
-$county = htmlspecialchars($_POST["county"]);
-$postcode = htmlspecialchars($_POST["postcode"]);
-$country = htmlspecialchars($_POST["country"]);
-//pet data
 
+if($_POST){
+    $main;
+}
+
+function main(){
+    //login details
+    $username = htmlspecialchars($_POST["username"]);
+    $password = htmlspecialchars($_POST["password"]);
+    $repeatPassword = htmlspecialchars($_POST["repeatPassword"]);
+    //personal details
+    $firstName = htmlspecialchars($_POST["firstName"]);
+    $lastName = htmlspecialchars($_POST["lastName"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $phoneNumber = htmlspecialchars($_POST["phoneNumber"]);
+    $dateOfBirth = htmlspecialchars($_POST["dateOfBirth"]);
+    $gender = htmlspecialchars($_POST["gender"]);
+    //address
+    $addressNumber = htmlspecialchars($_POST["addressNumber"]);
+    $addressL1 = htmlspecialchars($_POST["addressL1"]);
+    $addressL2 = htmlspecialchars($_POST["addressL2"]);
+    $town = htmlspecialchars($_POST["town"]);
+    $county = htmlspecialchars($_POST["county"]);
+    $postcode = htmlspecialchars($_POST["postcode"]);
+    $country = htmlspecialchars($_POST["country"]);
+    //pet data
+    $petData = $_POST["petData"];
+
+
+}
 
 $conn = new mysqli($serverName, $dbUsername, $dbPassword, $dbName);
 // Check connection
@@ -30,6 +39,7 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
+//database functions
 function userAlreadyExists($conn, $username){
     $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
 	$stmt->bind_param("s",$username);
@@ -37,7 +47,6 @@ function userAlreadyExists($conn, $username){
 	$result = $stmt->get_result();
     if(mysqli_num_rows($result) == 0){ return true; } //user exists
 }
-
 
 function insertUser($conn, $username, $password){
     $stmt = $conn->prepare("INSERT INTO users (username, password)
@@ -91,6 +100,19 @@ function insertPet($conn, $userID, $petName, $petType, $petAge){
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
+
+//validation functions
+function underL($input, $l){ if(strlen($input) < $l){ return true; } }
+function overL($input, $l){ if(strlen($input) > $l){ return true; } }
+
+function isValidEmail($email){
+    $re = "/\S+@\S+\.\S+/";
+    return preg_match($re, $email);
+}
+
+
+
+
 
 ?>
 
