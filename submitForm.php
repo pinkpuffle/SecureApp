@@ -21,12 +21,23 @@ $town = htmlspecialchars($_POST["town"]);
 $county = htmlspecialchars($_POST["county"]);
 $postcode = htmlspecialchars($_POST["postcode"]);
 $country = htmlspecialchars($_POST["country"]);
+//pet data
+
 
 $conn = new mysqli($serverName, $dbUsername, $dbPassword, $dbName);
 // Check connection
 if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
+
+function userAlreadyExists($conn, $username){
+    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
+	$stmt->bind_param("s",$username);
+	$stmt->execute();
+	$result = $stmt->get_result();
+    if(mysqli_num_rows($result) == 0){ return true; } //user exists
+}
+
 
 function insertUser($conn, $username, $password){
     $stmt = $conn->prepare("INSERT INTO users (username, password)
