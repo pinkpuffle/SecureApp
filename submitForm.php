@@ -3,9 +3,8 @@
 <?php
 include 'config.php';
 
-if($_POST){
-    $main;
-}
+if($_POST){ $main; } //check if posted
+else { echo "Error: code 1"; }
 
 function main(){
     //login details
@@ -109,8 +108,6 @@ function isValidEmail($email){
     $re = "/\S+@\S+\.\S+/";
     return preg_match($re, $email);
 }
-
-
 
 
 
