@@ -121,12 +121,12 @@ function main(){
     }
 
     if(in_array(false, $checks)){ //if any validation checks not pass
-        $i = 0;
+        $code = 1;
         foreach($checks as $check){
             if($check == false){ //for each check check if false
-                echo "Error code: " . $i . "\n"; //print error code
+                echo "Error code: " . $code . "\n"; //print error code
             }
-            $i++;
+            $code++;
         }
         exit();
     }
@@ -234,10 +234,6 @@ function removeSpace($input){
     return preg_replace("/\s+/", "", $input);
 }
 
-
-function error($code){
-    echo "Error: code " . $code . "\n";
-}
 
 
 
