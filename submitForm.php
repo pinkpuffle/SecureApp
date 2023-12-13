@@ -114,13 +114,21 @@ function isValidPhone($number){
     return preg_match($re, $phone);
 }
 
-function validateDate($date) {
+function isValidDate($date) {
     $tempDate = explode('-', $date);
     // checkdate(month, day, year)
     return checkdate($tempDate[1], $tempDate[2], $tempDate[0]);
     //https://stackoverflow.com/a/29093651
   }
 
+function isValidPostcode($postcode){
+    $re = "/^[A-Z]{1,2}[0-9]{1,2}[A-Z]{0,1} ?[0-9][A-Z]{2}$/i";
+    return preg_match($re, $postcode);
+}
+
+function removeSpace($input){
+    return preg_replace("/\s/g", "", $input);
+}
 
 
 
