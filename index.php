@@ -136,8 +136,8 @@ function validateForm(){
     }
 
     //county
-    if(underL(county, 3) || overL(county, 30)){
-        document.getElementById("countryWarning").innerHTML = "County must be between 3 and 30 characters";
+    if(underL(country, 3) || overL(country, 30)){
+        document.getElementById("countryWarning").innerHTML = "Country must be between 3 and 30 characters";
         check = false;
     }
 
@@ -200,7 +200,7 @@ function removeSpace(input){
 
 <h1>Register</h1><br>
 
-<form name="register" action="submitForm.php" onsubmit="return validateForm()" method="post">
+<form name="register" action="submitForm.php" method="post">
     
     <h3>Login details</h3>
 
