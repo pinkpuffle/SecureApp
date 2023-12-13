@@ -43,7 +43,8 @@ function validateForm(){
     document.getElementById("countryWarning").innerHTML = "";
     document.getElementById("petDataWarning").innerHTML = "";
 
-
+    //validation
+    //login details
     //username
     if(underL(username, 5) || overL(username, 30)){
         document.getElementById("usernameWarning").innerHTML = "Username must be between 5 and 30 characters";
@@ -60,7 +61,7 @@ function validateForm(){
         check = false;
     }
 
-
+    //personal details
     //first name
     if(underL(username, 1) || overL(firstName, 30)){
         document.getElementById("firstNameWarning").innerHTML = "First name must be between 1 and 30 characters";
@@ -97,10 +98,11 @@ function validateForm(){
         check = false;
     }
 
-
+    //address
     //address number
     if(isNaN(addressNumber) || underL(addressNumber, 1) || overL(addressNumber, 10)){
         document.getElementById("addressNumberWarning").innerHTML = "Must be a valid number between 1 and 10 characters";
+        check = false;
     }
 
 
@@ -139,9 +141,9 @@ function validateForm(){
         check = false;
     }
 
-    //JSON
+    //pet information
     let reader = new FileReader();
-    reader.readAsText(petFile); //reads uploade file
+    reader.readAsText(petFile); //reads uploaded file
     reader.onload = function() {
         try{ //tries parsing file
             JSON.parse(reader.result);
