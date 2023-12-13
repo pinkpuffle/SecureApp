@@ -11,6 +11,8 @@ else {
     exit();
  }
 
+ main();
+
 function main(){
     $checks = array_fill(0, 20, true); //array for error checks
 
@@ -213,7 +215,7 @@ function isValidEmail($email){
 
 function isValidPhone($number){
     $re = "/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im";
-    return preg_match($re, $phone);
+    return preg_match($re, $number);
 }
 
 function isValidDate($date) {
@@ -229,7 +231,7 @@ function isValidPostcode($postcode){
 }
 
 function removeSpace($input){
-    return preg_replace("/\s/g", "", $input);
+    return preg_replace("/\s+/", "", $input);
 }
 
 
