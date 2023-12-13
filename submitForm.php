@@ -114,6 +114,13 @@ function isValidPhone($number){
     return preg_match($re, $phone);
 }
 
+function validateDate($date) {
+    $tempDate = explode('-', $date);
+    // checkdate(month, day, year)
+    return checkdate($tempDate[1], $tempDate[2], $tempDate[0]);
+    //https://stackoverflow.com/a/29093651
+  }
+
 
 
 
