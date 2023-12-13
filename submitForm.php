@@ -4,7 +4,7 @@
 include 'config.php';
 
 if($_POST){ $main; } //check if posted
-else { echo "Error: code 1"; }
+else { error("1"); }
 
 function main(){
     //login details
@@ -28,6 +28,8 @@ function main(){
     $country = htmlspecialchars($_POST["country"]);
     //pet data
     $petData = $_POST["petData"];
+
+
 
 
 }
@@ -128,6 +130,11 @@ function isValidPostcode($postcode){
 
 function removeSpace($input){
     return preg_replace("/\s/g", "", $input);
+}
+
+
+function error($code){
+    echo "Error: code " . $code;
 }
 
 
