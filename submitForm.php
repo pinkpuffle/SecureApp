@@ -109,6 +109,13 @@ function isValidEmail($email){
     return preg_match($re, $email);
 }
 
+function isValidPhone($number){
+    $re = "/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im";
+    return preg_match($re, $phone);
+}
+
+
+
 
 
 ?>
