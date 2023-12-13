@@ -2,6 +2,8 @@
 <body>
 <?php
 include 'config.php';
+//require __DIR__ . '/vendor/autoload.php';
+//use KHerGe\JSON\JSON;
 
 if($_POST){ //check if posted
     main();
@@ -33,8 +35,9 @@ function main(){
     $county = htmlspecialchars($_POST["county"]);
     $postcode = htmlspecialchars($_POST["postcode"]);
     $country = htmlspecialchars($_POST["country"]);
-    //pet data
-    $petData = $_POST["petData"];
+    //petData
+    $petData = $_FILES["petData"]["tmp_name"];
+    $fileContent = file_get_contents($petData);
 
     //validation
     //login details
@@ -116,6 +119,17 @@ function main(){
     //county
     if(underL($county, 3) || overL($county, 30)){
         $checks[15] = false;
+    }
+
+    //pet data 
+    if(isJsonValid($fileContent)){ //if JSON is valid
+        $petDataArray = json_decode($fileContent, true);
+        echo count($petDataArray['pets']);
+
+
+    }
+    else{
+        $checks[16] = false; //not valid
     }
 
     if(in_array(false, $checks)){ //if any validation checks not pass
@@ -230,6 +244,15 @@ function isValidPostcode($postcode){
 
 function removeSpace($input){
     return preg_replace("/\s+/", "", $input);
+}
+
+function isJsonValid($data) { 
+    //https://www.geeksforgeeks.org/how-to-validate-json-in-php/
+    if (!empty($data)) { 
+        return is_string($data) &&  
+          is_array(json_decode($data, true)) ? true : false; 
+    } 
+    return false; 
 }
 
 
