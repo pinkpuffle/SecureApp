@@ -48,6 +48,40 @@ function main(){
         $check = false;
     }
 
+
+    //first name
+    if(underL($username, 1) || overL($firstName, 30)){
+        error("2");
+        $check = false;
+    }
+
+    //last name
+    if(underL($username, 1) || overL($lastName, 30)){
+        error("2");
+        $check = false;
+    }
+
+    //email
+    if(!isValidEmail($email)){
+        error("4");
+        $check = false;
+    }
+
+    //phone
+    if(!isValidPhone(removeSpace($phoneNumber))){
+        $check = false;
+    }
+
+    //dob
+    if(!isValidDate($dateOfBirth)){
+        $check = false;
+    }
+
+    //gender
+    if(in_array($gender, array("male", "female", "non-binary"))){
+        $check = false;
+    }
+
 }
 
 $conn = new mysqli($serverName, $dbUsername, $dbPassword, $dbName);
@@ -150,7 +184,7 @@ function removeSpace($input){
 
 
 function error($code){
-    echo "Error: code " . $code;
+    echo "Error: code " . $code . "\n";
 }
 
 
