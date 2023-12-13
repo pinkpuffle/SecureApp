@@ -80,7 +80,7 @@ function main(){
     }
 
     //gender
-    if(in_array($gender, array("male", "female", "non-binary"))){
+    if(!in_array($gender, array("male", "female", "non-binary"))){
         $checks[8] = false;
     }
 
@@ -124,7 +124,7 @@ function main(){
         $code = 1;
         foreach($checks as $check){
             if($check == false){ //for each check check if false
-                echo "Error code: " . $code . "\n"; //print error code
+                echo "Error code: " . $code . "<br>"; //print error code
             }
             $code++;
         }
