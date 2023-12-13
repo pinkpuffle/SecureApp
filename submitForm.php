@@ -3,11 +3,16 @@
 <?php
 include 'config.php';
 
-if($_POST){ $main; } //check if posted
-else { error("1"); }
+if($_POST){ //check if posted
+    main();
+}
+else {
+    echo "Error code: 50";
+    exit();
+ }
 
 function main(){
-    $check = true;
+    $checks = array_fill(0, 20, true); //array for error checks
 
     //login details
     $username = htmlspecialchars($_POST["username"]);
@@ -35,84 +40,96 @@ function main(){
     //login details
     //username
     if(underL($username, 5) || overL($username, 30)){
-        error("2");
-        $check = false;
+        $checks[0] = false;
     }
 
     //password
     if(underL($password, 5) || overL($password, 30)){
-        error("2");
-        $check = false;
+        $checks[1] = false;
     }
     if($repeatPassword != $password){
-        error("3");
-        $check = false;
+        $checks[2] = false;
     }
 
     //personal details
     //first name
     if(underL($username, 1) || overL($firstName, 30)){
-        error("2");
-        $check = false;
+        $checks[3] = false;
     }
 
     //last name
     if(underL($username, 1) || overL($lastName, 30)){
-        error("2");
-        $check = false;
+        $checks[4] = false;
     }
 
     //email
     if(!isValidEmail($email)){
-        error("4");
-        $check = false;
+        $checks[5] = false;
     }
 
     //phone
     if(!isValidPhone(removeSpace($phoneNumber))){
-        $check = false;
+        $checks[6] = false;
     }
 
     //dob
     if(!isValidDate($dateOfBirth)){
-        $check = false;
+        $checks[7] = false;
     }
 
     //gender
     if(in_array($gender, array("male", "female", "non-binary"))){
-        $check = false;
+        $checks[8] = false;
     }
 
     //address
     //address number
     if(is_nan($addressNumber) || underL($addressNumber, 1) || overL($addressNumber, 10)){
-        $check = false;
+        $checks[9] = false;
     }
 
 
     if(underL($addressL1, 3) || overL($addressL1, 30)){
-        $check = false;
+        $checks[10] = false;
     }
 
     //address L2
     if(overL($addressL1, 30)){
-        $check = false;
+        $checks[11] = false;
     }
 
     //town
     if(underL($town, 3) || overL($town, 30)){
+        $checks[12] = false;
     }
 
     //county
     if(underL($county, 3) || overL($county, 30)){
+        $checks[13] = false;
     }
 
     //postcode
     if(!isValidPostcode($postcode)){
+        $checks[14] = false;
     }
 
     //county
     if(underL($county, 3) || overL($county, 30)){
+        $checks[15] = false;
+    }
+
+    if(in_array(false, $checks)){ //if any validation checks not pass
+        $i = 0;
+        foreach($checks as $check){
+            if($check == false){ //for each check check if false
+                echo "Error code: " . $i . "\n"; //print error code
+            }
+            $i++;
+        }
+        exit();
+    }
+    else{
+        echo "Database stuff goes here";
     }
 
 }
