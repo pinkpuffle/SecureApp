@@ -31,7 +31,8 @@ function main(){
     //pet data
     $petData = $_POST["petData"];
 
-
+    //validation
+    //login details
     //username
     if(underL($username, 5) || overL($username, 30)){
         error("2");
@@ -48,7 +49,7 @@ function main(){
         $check = false;
     }
 
-
+    //personal details
     //first name
     if(underL($username, 1) || overL($firstName, 30)){
         error("2");
@@ -80,6 +81,38 @@ function main(){
     //gender
     if(in_array($gender, array("male", "female", "non-binary"))){
         $check = false;
+    }
+
+    //address
+    //address number
+    if(is_nan($addressNumber) || underL($addressNumber, 1) || overL($addressNumber, 10)){
+        $check = false;
+    }
+
+
+    if(underL($addressL1, 3) || overL($addressL1, 30)){
+        $check = false;
+    }
+
+    //address L2
+    if(overL($addressL1, 30)){
+        $check = false;
+    }
+
+    //town
+    if(underL($town, 3) || overL($town, 30)){
+    }
+
+    //county
+    if(underL($county, 3) || overL($county, 30)){
+    }
+
+    //postcode
+    if(!isValidPostcode($postcode)){
+    }
+
+    //county
+    if(underL($county, 3) || overL($county, 30)){
     }
 
 }
