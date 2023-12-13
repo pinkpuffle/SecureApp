@@ -124,9 +124,17 @@ function main(){
     //pet data 
     if(isJsonValid($fileContent)){ //if JSON is valid
         $petDataArray = json_decode($fileContent, true);
-        echo count($petDataArray['pets']);
-
-
+        $attributes = array_keys($petDataArray);
+        
+        if($attributes[0] == "name" && $attributes[1] == "type" && $attributes[2] == "age"){ //if attributes formatted correctly
+            
+            if(!is_numeric($petDataArray["age"])){
+                $checks[18] = false;
+            }
+        }
+        else{
+            $checks[17] = false;
+        }
     }
     else{
         $checks[16] = false; //not valid
