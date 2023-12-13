@@ -11,8 +11,6 @@ else {
     exit();
  }
 
- main();
-
 function main(){
     $checks = array_fill(0, 20, true); //array for error checks
 
@@ -86,11 +84,11 @@ function main(){
 
     //address
     //address number
-    if(is_nan($addressNumber) || underL($addressNumber, 1) || overL($addressNumber, 10)){
+    if(!is_numeric($addressNumber) || underL($addressNumber, 1) || overL($addressNumber, 10)){
         $checks[9] = false;
     }
 
-
+    //address L1
     if(underL($addressL1, 3) || overL($addressL1, 30)){
         $checks[10] = false;
     }
