@@ -7,6 +7,8 @@ if($_POST){ $main; } //check if posted
 else { error("1"); }
 
 function main(){
+    $check = true;
+
     //login details
     $username = htmlspecialchars($_POST["username"]);
     $password = htmlspecialchars($_POST["password"]);
@@ -30,7 +32,21 @@ function main(){
     $petData = $_POST["petData"];
 
 
+    //username
+    if(underL($username, 5) || overL($username, 30)){
+        error("2");
+        $check = false;
+    }
 
+    //password
+    if(underL($password, 5) || overL($password, 30)){
+        error("2");
+        $check = false;
+    }
+    if($repeatPassword != $password){
+        error("3");
+        $check = false;
+    }
 
 }
 
