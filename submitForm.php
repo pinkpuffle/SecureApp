@@ -2,8 +2,11 @@
 <body>
 <?php
 include 'config.php';
-//require __DIR__ . '/vendor/autoload.php';
-//use KHerGe\JSON\JSON;
+function exceptions_error_handler($severity, $message, $filename, $lineno) {
+    throw new ErrorException($message, 0, $severity, $filename, $lineno);
+}
+
+set_error_handler('exceptions_error_handler');
 
 if($_POST){ //check if posted
     main();
@@ -14,144 +17,154 @@ else {
  }
 
 function main(){
-    $checks = array_fill(0, 20, true); //array for error checks
 
-    //login details
-    $username = htmlspecialchars($_POST["username"]);
-    $password = htmlspecialchars($_POST["password"]);
-    $repeatPassword = htmlspecialchars($_POST["repeatPassword"]);
-    //personal details
-    $firstName = htmlspecialchars($_POST["firstName"]);
-    $lastName = htmlspecialchars($_POST["lastName"]);
-    $email = htmlspecialchars($_POST["email"]);
-    $phoneNumber = htmlspecialchars($_POST["phoneNumber"]);
-    $dateOfBirth = htmlspecialchars($_POST["dateOfBirth"]);
-    $gender = htmlspecialchars($_POST["gender"]);
-    //address
-    $addressNumber = htmlspecialchars($_POST["addressNumber"]);
-    $addressL1 = htmlspecialchars($_POST["addressL1"]);
-    $addressL2 = htmlspecialchars($_POST["addressL2"]);
-    $town = htmlspecialchars($_POST["town"]);
-    $county = htmlspecialchars($_POST["county"]);
-    $postcode = htmlspecialchars($_POST["postcode"]);
-    $country = htmlspecialchars($_POST["country"]);
-    //petData
-    $petData = $_FILES["petData"]["tmp_name"];
-    $fileContent = file_get_contents($petData);
-
-    //validation
-    //login details
-    //username
-    if(underL($username, 5) || overL($username, 30)){
-        $checks[0] = false;
-    }
-
-    //password
-    if(underL($password, 5) || overL($password, 30)){
-        $checks[1] = false;
-    }
-    if($repeatPassword != $password){
-        $checks[2] = false;
-    }
-
-    //personal details
-    //first name
-    if(underL($username, 1) || overL($firstName, 30)){
-        $checks[3] = false;
-    }
-
-    //last name
-    if(underL($username, 1) || overL($lastName, 30)){
-        $checks[4] = false;
-    }
-
-    //email
-    if(!isValidEmail($email)){
-        $checks[5] = false;
-    }
-
-    //phone
-    if(!isValidPhone(removeSpace($phoneNumber))){
-        $checks[6] = false;
-    }
-
-    //dob
-    if(!isValidDate($dateOfBirth)){
-        $checks[7] = false;
-    }
-
-    //gender
-    if(!in_array($gender, array("male", "female", "non-binary"))){
-        $checks[8] = false;
-    }
-
-    //address
-    //address number
-    if(!is_numeric($addressNumber) || underL($addressNumber, 1) || overL($addressNumber, 10)){
-        $checks[9] = false;
-    }
-
-    //address L1
-    if(underL($addressL1, 3) || overL($addressL1, 30)){
-        $checks[10] = false;
-    }
-
-    //address L2
-    if(overL($addressL1, 30)){
-        $checks[11] = false;
-    }
-
-    //town
-    if(underL($town, 3) || overL($town, 30)){
-        $checks[12] = false;
-    }
-
-    //county
-    if(underL($county, 3) || overL($county, 30)){
-        $checks[13] = false;
-    }
-
-    //postcode
-    if(!isValidPostcode($postcode)){
-        $checks[14] = false;
-    }
-
-    //county
-    if(underL($county, 3) || overL($county, 30)){
-        $checks[15] = false;
-    }
-
-    //pet data 
-    if(isJsonValid($fileContent)){ //if JSON is valid
-        $petDataArray = json_decode($fileContent, true);
-        $attributes = array_keys($petDataArray);
+    try{
         
-        if($attributes[0] == "name" && $attributes[1] == "type" && $attributes[2] == "age"){ //if attributes formatted correctly
-            
-            if(!is_numeric($petDataArray["age"])){
-                $checks[18] = false;
+        $checks = array_fill(0, 20, true); //array for error checks
+        
+
+
+        //login details
+        $username = htmlspecialchars($_POST["username"]);
+        $password = htmlspecialchars($_POST["password"]);
+        $repeatPassword = htmlspecialchars($_POST["repeatPassword"]);
+        //personal details
+        $firstName = htmlspecialchars($_POST["firstName"]);
+        $lastName = htmlspecialchars($_POST["lastName"]);
+        $email = htmlspecialchars($_POST["email"]);
+        $phoneNumber = htmlspecialchars($_POST["phoneNumber"]);
+        $dateOfBirth = htmlspecialchars($_POST["dateOfBirth"]);
+        $gender = htmlspecialchars($_POST["gender"]);
+        //address
+        $addressNumber = htmlspecialchars($_POST["addressNumber"]);
+        $addressL1 = htmlspecialchars($_POST["addressL1"]);
+        $addressL2 = htmlspecialchars($_POST["addressL2"]);
+        $town = htmlspecialchars($_POST["town"]);
+        $county = htmlspecialchars($_POST["county"]);
+        $postcode = htmlspecialchars($_POST["postcode"]);
+        $country = htmlspecialchars($_POST["country"]);
+        //petData
+        $petData = $_FILES["petData"]["tmp_name"];
+        $fileContent = file_get_contents($petData);
+
+        //validation
+        //login details
+        //username
+        if(underL($username, 5) || overL($username, 30)){
+            $checks[0] = false;
+        }
+
+        //password
+        if(underL($password, 5) || overL($password, 30)){
+            $checks[1] = false;
+        }
+        if($repeatPassword != $password){
+            $checks[2] = false;
+        }
+
+        //personal details
+        //first name
+        if(underL($username, 1) || overL($firstName, 30)){
+            $checks[3] = false;
+        }
+
+        //last name
+        if(underL($username, 1) || overL($lastName, 30)){
+            $checks[4] = false;
+        }
+
+        //email
+        if(!isValidEmail($email)){
+            $checks[5] = false;
+        }
+
+        //phone
+        if(!isValidPhone(removeSpace($phoneNumber))){
+            $checks[6] = false;
+        }
+
+        //dob
+        if(!isValidDate($dateOfBirth)){
+            $checks[7] = false;
+        }
+
+        //gender
+        if(!in_array($gender, array("male", "female", "non-binary"))){
+            $checks[8] = false;
+        }
+
+        //address
+        //address number
+        if(!is_numeric($addressNumber) || underL($addressNumber, 1) || overL($addressNumber, 10)){
+            $checks[9] = false;
+        }
+
+        //address L1
+        if(underL($addressL1, 3) || overL($addressL1, 30)){
+            $checks[10] = false;
+        }
+
+        //address L2
+        if(overL($addressL1, 30)){
+            $checks[11] = false;
+        }
+
+        //town
+        if(underL($town, 3) || overL($town, 30)){
+            $checks[12] = false;
+        }
+
+        //county
+        if(underL($county, 3) || overL($county, 30)){
+            $checks[13] = false;
+        }
+
+        //postcode
+        if(!isValidPostcode($postcode)){
+            $checks[14] = false;
+        }
+
+        //county
+        if(underL($county, 3) || overL($county, 30)){
+            $checks[15] = false;
+        }
+
+        //pet data 
+        if(isJsonValid($fileContent)){ //if JSON is valid
+            $petDataArray = json_decode($fileContent, true);
+            $attributes = array_keys($petDataArray);
+
+            if($attributes[0] == "name" && $attributes[1] == "type" && $attributes[2] == "age"){ //if attributes formatted correctly
+                
+                if(!is_numeric($petDataArray["age"])){
+                    $checks[18] = false;
+                }
+            }
+            else{
+                $checks[17] = false;
             }
         }
         else{
-            $checks[17] = false;
+            $checks[16] = false; //not valid
         }
-    }
-    else{
-        $checks[16] = false; //not valid
-    }
 
-    if(in_array(false, $checks)){ //if any validation checks not pass
-        $code = 1;
-        foreach($checks as $check){
-            if($check == false){ //for each check check if false
-                echo "Error code: " . $code . "<br>"; //print error code
+        if(in_array(false, $checks)){ //if any validation checks not pass
+            $code = 1;
+            foreach($checks as $check){
+                if($check == false){ //for each check check if false
+                    echo "Error code: " . $code . "<br>"; //print error code
+                }
+                $code++;
             }
-            $code++;
+            exit();
         }
+        else{
+            echo "Database stuff goes here";
+        }
+
+    }catch(Exception $e){ //error in validation
+        echo "Error code: 51";
         exit();
-    }
-    else{
-        echo "Database stuff goes here";
     }
 
 }
