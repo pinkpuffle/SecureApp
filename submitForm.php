@@ -177,14 +177,16 @@ function main($conn){
 
                 $userID = getUserID($conn, $username);
 
-                insertUserDetails($conn, $userID, $firstName, $lastName, $email, $phoneNumber, $dateofBirth, $gender);
+                insertUserDetails($conn, $userID, $firstName, $lastName, $email, $phoneNumber, $dateOfBirth, $gender);
 
                 insertAddress($conn, $userID, $addressNumber, $addressL1, $addressL2, $town, $county, $postcode, $country);
 
                 insertPet($conn, $userID, $petName, $petType, $petAge);
 
+                echo "Details added";
+
             }catch(Exception $e){ //error in database
-                echo "Error code: 52";
+                echo "Error code: 52 - " . $e;
                 exit();
             }
             
@@ -203,7 +205,7 @@ function userAlreadyExists($conn, $username){
 	$stmt->bind_param("s",$username);
 	$stmt->execute();
 	$result = $stmt->get_result();
-    if(mysqli_num_rows($result) == 0){ return true; } //user exists
+    if(mysqli_num_rows($result) != 0){ return true; } //user exists
 }
 
 function insertUser($conn, $username, $password){
@@ -226,10 +228,10 @@ function getUserID($conn, $username){
     return $row["userID"];
 }
 
-function insertUserDetails($conn, $userID, $firstName, $lastName, $email, $phoneNumber, $dateofBirth, $gender){
+function insertUserDetails($conn, $userID, $firstName, $lastName, $email, $phoneNumber, $dateOfBirth, $gender){
     $stmt = $conn->prepare("INSERT INTO userdetails (userID, firstName, lastName, email, phoneNumber, dateOfBirth, gender)
     VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("issssss",$userID, $firstName, $lastName, $lastName, $email, $phoneNumber, $dateOfBirth, $gender);
+    $stmt->bind_param("issssss",$userID, $firstName, $lastName, $email, $phoneNumber, $dateOfBirth, $gender);
 
     if($stmt->execute() === TRUE){;
     }else{
@@ -238,9 +240,10 @@ function insertUserDetails($conn, $userID, $firstName, $lastName, $email, $phone
 }
 
 function insertAddress($conn, $userID, $addressNumber, $addressL1, $addressL2, $town, $county, $postcode, $country){
-    $stmt = $conn->prepare("INSERT INTO addresses (userID, addressNumber, lineOne, lineTwo, town, county, postcode, country)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("isssssss",$userID, $addressNumber, $addressL1, $addressL2, $town, $county, $postcode, $country);
+    
+    $stmt = $conn->prepare("INSERT INTO addresses (userID, number, lineOne, lineTwo, town, county, postcode, country)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)");   
+    $stmt->bind_param("iissssss",$userID, $addressNumber, $addressL1, $addressL2, $town, $county, $postcode, $country);
 
     if($stmt->execute() === TRUE){;
     }else{
@@ -249,7 +252,7 @@ function insertAddress($conn, $userID, $addressNumber, $addressL1, $addressL2, $
 }
 
 function insertPet($conn, $userID, $petName, $petType, $petAge){
-    $stmt = $conn->prepare("INSERT INTO userdetails (userID, name, type, age)
+    $stmt = $conn->prepare("INSERT INTO pets (userID, name, type, age)
     VALUES (?, ?, ?, ?)");
     $stmt->bind_param("issi",$userID, $petName, $petType, $petAge);
 
