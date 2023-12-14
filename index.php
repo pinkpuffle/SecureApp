@@ -154,9 +154,6 @@ function validateForm(){
         }
     }
 
-
-    check = false; //for testing
-
     return check;
 }
 
@@ -200,7 +197,7 @@ function removeSpace(input){
 
 <h1>Register</h1><br>
 
-<form name="register" action="submitForm.php" method="post">
+<form name="register" action="submitForm.php" enctype="multipart/form-data" onsubmit="return validateForm()" method="post">
     
     <h3>Login details</h3>
 
