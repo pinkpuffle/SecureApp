@@ -164,19 +164,15 @@ function overL(input, l){ if(input.length > l){return true;} }
 function isValidEmail(email){
     var re = /\S+@\S+\.\S+/;
     return re.test(email);
-    //https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
-    //may need to be edited
 }
 
 function isValidPhone(number){
     var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
     return re.test(number);
-    //https://stackoverflow.com/a/29767609
 }
 
 function isValidDate(d){
     return !isNaN((new Date(d)).getTime());
-    //https://stackoverflow.com/a/36000303
 }
 
 function isValidPostcode(postcode){
@@ -186,7 +182,6 @@ function isValidPostcode(postcode){
 
 function removeSpace(input){
     return input.replace(/\s/g, "");
-    //https://stackoverflow.com/a/10800402
 }
 
 </script>

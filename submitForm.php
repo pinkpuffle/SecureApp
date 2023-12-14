@@ -280,7 +280,6 @@ function isValidDate($date) {
     $tempDate = explode('-', $date);
     // checkdate(month, day, year)
     return checkdate($tempDate[1], $tempDate[2], $tempDate[0]);
-    //https://stackoverflow.com/a/29093651
   }
 
 function isValidPostcode($postcode){
@@ -293,17 +292,12 @@ function removeSpace($input){
 }
 
 function isJsonValid($data) { 
-    //https://www.geeksforgeeks.org/how-to-validate-json-in-php/
     if (!empty($data)) { 
         return is_string($data) &&  
           is_array(json_decode($data, true)) ? true : false; 
     } 
     return false; 
 }
-
-
-
-
 
 ?>
 
