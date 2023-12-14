@@ -5,24 +5,26 @@ include 'config.php';
 function exceptions_error_handler($severity, $message, $filename, $lineno) {
     throw new ErrorException($message, 0, $severity, $filename, $lineno);
 }
+set_error_handler('exceptions_error_handler'); //handle error reporting
 
-set_error_handler('exceptions_error_handler');
+$conn = new mysqli($serverName, $dbUsername, $dbPassword, $dbName);
+// Check connection
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+}
 
 if($_POST){ //check if posted
-    main();
+    main($conn);
 }
 else {
     echo "Error code: 50";
     exit();
  }
 
-function main(){
+function main($conn){
 
     try{
-        
         $checks = array_fill(0, 20, true); //array for error checks
-        
-
 
         //login details
         $username = htmlspecialchars($_POST["username"]);
@@ -159,7 +161,33 @@ function main(){
             exit();
         }
         else{
-            echo "Database stuff goes here";
+            //database stuff
+            try{
+                if(userAlreadyexists($conn, $username)){ //if user already exists in db
+                    echo "Error code: 60";
+                    exit();
+                }
+
+                //pet data values
+                $petName = htmlspecialchars($petDataArray["name"]);
+                $petType = htmlspecialchars($petDataArray["type"]);
+                $petAge = htmlspecialchars($petDataArray["age"]);
+
+                insertUser($conn, $username, $password);
+
+                $userID = getUserID($conn, $username);
+
+                insertUserDetails($conn, $userID, $firstName, $lastName, $email, $phoneNumber, $dateofBirth, $gender);
+
+                insertAddress($conn, $userID, $addressNumber, $addressL1, $addressL2, $town, $county, $postcode, $country);
+
+                insertPet($conn, $userID, $petName, $petType, $petAge);
+
+            }catch(Exception $e){ //error in database
+                echo "Error code: 52";
+                exit();
+            }
+            
         }
 
     }catch(Exception $e){ //error in validation
@@ -167,12 +195,6 @@ function main(){
         exit();
     }
 
-}
-
-$conn = new mysqli($serverName, $dbUsername, $dbPassword, $dbName);
-// Check connection
-if ($conn->connect_error) {
-	die("Connection failed: " . $conn->connect_error);
 }
 
 //database functions
