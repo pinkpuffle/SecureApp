@@ -112,7 +112,7 @@ function validateForm(){
     }
 
     //address L2
-    if(overL(addressL1, 30)){
+    if(overL(addressL2, 30)){
         document.getElementById("addressL2Warning").innerHTML = "Address line 2 must be under 30 character";
         check = false;
     }
