@@ -215,7 +215,7 @@ function insertUser($conn, $username, $password){
 
     if($stmt->execute() === TRUE){
     }else{
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $stmt . "<br>" . $conn->error;
     }
 }
 
@@ -235,7 +235,7 @@ function insertUserDetails($conn, $userID, $firstName, $lastName, $email, $phone
 
     if($stmt->execute() === TRUE){;
     }else{
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $stmt . "<br>" . $conn->error;
     }
 }
 
@@ -247,7 +247,7 @@ function insertAddress($conn, $userID, $addressNumber, $addressL1, $addressL2, $
 
     if($stmt->execute() === TRUE){;
     }else{
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $stmt . "<br>" . $conn->error;
     }
 }
 
@@ -258,7 +258,7 @@ function insertPet($conn, $userID, $petName, $petType, $petAge){
 
     if($stmt->execute() === TRUE){;
     }else{
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $stmt . "<br>" . $conn->error;
     }
 }
 
