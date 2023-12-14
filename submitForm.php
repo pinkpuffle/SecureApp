@@ -66,12 +66,12 @@ function main($conn){
 
         //personal details
         //first name
-        if(underL($username, 1) || overL($firstName, 30)){
+        if(underL($firstName, 1) || overL($firstName, 30)){
             $checks[3] = false;
         }
 
         //last name
-        if(underL($username, 1) || overL($lastName, 30)){
+        if(underL($lastName, 1) || overL($lastName, 30)){
             $checks[4] = false;
         }
 
@@ -107,7 +107,7 @@ function main($conn){
         }
 
         //address L2
-        if(overL($addressL1, 30)){
+        if(overL($addressL2, 30)){
             $checks[11] = false;
         }
 
@@ -127,7 +127,7 @@ function main($conn){
         }
 
         //county
-        if(underL($county, 3) || overL($county, 30)){
+        if(underL($country, 3) || overL($country, 30)){
             $checks[15] = false;
         }
 
