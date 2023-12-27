@@ -1,4 +1,6 @@
 # SecureApp
-Uni project secure webform demonstrating front-end and back-end:
+A university project for my Secure Programming module.
+
+Demonstrates front-end and back-end:
 - validation for multiple input formats
 - exception handling
